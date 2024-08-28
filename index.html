@@ -3,90 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة التقاعد للمحول من الخدمة المدنية الى التأمينات الإجتماعية</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <title>حاسبة التقاعد للمنتقل من الخدمة المدنية الى التأمينات الاجتماعية</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #4a90e2 0%, #50e3c2 100%);
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .section {
+            background-color: #e1bee7;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
         }
         .input-group {
-            @apply mb-4;
+            background-color: #01579b;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
         }
-        .input-label {
-            @apply block text-gray-700 text-sm font-bold mb-2;
+        input {
+            width: 90%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
         }
-        .input-field {
-            @apply shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
+        button {
+            background-color: #03a9f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        .result {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .developers {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+        .developers a {
+            color: #01579b;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .developers a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <div class="gradient-bg text-white py-8 mb-8">
-        <h1 class="text-4xl font-bold text-center">حاسبة التقاعد</h1>
-        <p class="text-center text-xl mt-2">للمحول من الخدمة المدنية الى التأمينات الإجتماعية</p>
-    </div>
-    <div class="container mx-auto px-4">
-        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
-            <div class="mb-8">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">الخدمة المدنية</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="input-group">
-                        <label class="input-label" for="civilSalary">الراتب الأساسي الأخير</label>
-                        <input class="input-field" id="civilSalary" type="number" placeholder="أدخل الراتب">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="civilMonths">مدة الخدمة (بالأشهر)</label>
-                        <input class="input-field" id="civilMonths" type="number" placeholder="الأشهر">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="civilYears">مدة الخدمة (بالسنوات)</label>
-                        <input class="input-field" id="civilYears" type="number" placeholder="السنوات">
-                    </div>
-                </div>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>حاسبة التقاعد</h2>
+            <p>للمنتقل من الخدمة المدنية الى التأمينات الاجتماعية</p>
+        </div>
+        
+        <div class="section">الخدمة المدنية</div>
+        <div class="inputs">
+            <div class="input-group">
+                <label for="civilSalary">الراتب الأساسي الاخير</label>
+                <input type="number" id="civilSalary">
             </div>
-            <div class="mb-8">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">الخدمة في التأمينات الإجتماعية</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="input-group">
-                        <label class="input-label" for="companySalary">متوسط آخر راتبين</label>
-                        <input class="input-field" id="companySalary" type="number" placeholder="أدخل متوسط الراتب">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="companyMonths">مدة الخدمة (بالأشهر)</label>
-                        <input class="input-field" id="companyMonths" type="number" placeholder="الأشهر">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="companyYears">مدة الخدمة (بالسنوات)</label>
-                        <input class="input-field" id="companyYears" type="number" placeholder="السنوات">
-                    </div>
-                </div>
+            <div class="input-group">
+                <label for="civilMonths">مدة الخدمة بالأشهر</label>
+                <input type="number" id="civilMonths">
             </div>
-            <div class="flex items-center justify-center">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105" type="button" onclick="calculatePension()">
-                    احسب التقاعد
-                </button>
+            <div class="input-group">
+                <label for="civilYears">مدة الخدمة بالسنوات</label>
+                <input type="number" id="civilYears">
             </div>
         </div>
-        <div id="result" class="bg-white border-2 border-green-500 p-6 rounded-lg shadow-md hidden" role="alert">
-            <p class="font-bold text-xl mb-2 text-gray-700">نتيجة الحساب</p>
-            <p class="text-3xl font-bold text-green-600" id="resultText"></p>
+        
+        <div class="section">التأمينات الاجتماعية</div>
+        <div class="inputs">
+            <div class="input-group">
+                <label for="companySalary">متوسط اخر راتبين</label>
+                <input type="number" id="companySalary">
+            </div>
+            <div class="input-group">
+                <label for="companyMonths">مدة الخدمة بالأشهر</label>
+                <input type="number" id="companyMonths">
+            </div>
+            <div class="input-group">
+                <label for="companyYears">مدة الخدمة بالسنوات</label>
+                <input type="number" id="companyYears">
+            </div>
         </div>
-    </div>
+        
+        <button onclick="calculatePension()">احسب</button>
+        
+        <div id="result" class="result" style="display: none;">
+            <p>المعاش المتوقع:</p>
+            <p id="resultValue"></p>
+        </div>
 
-    <footer class="gradient-bg text-white py-4 mt-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col sm:flex-row justify-between items-center">
-                <p class="mb-2 sm:mb-0">تم كتابة كافة المعادلات بواسطة ابو احمد <a href="https://x.com/abu_ahmed4835" target="_blank" class="text-blue-200 hover:text-blue-100"><i class="fab fa-twitter"></i> @abu_ahmed4835</a></p>
-                <p>تم تصميم الصفحة بواسطة ابو وسيم <a href="https://x.com/daghriry" target="_blank" class="text-blue-200 hover:text-blue-100"><i class="fab fa-twitter"></i> @daghriry</a></p>
-            </div>
+        <div class="developers">
+            <p>تم كتابة كافة المعادلات بواسطة ابو احمد 
+                <a href="https://x.com/abu_ahmed4835" target="_blank"><i class="fab fa-twitter"></i> @abu_ahmed4835</a>
+            </p>
+            <p>تم تصميم الصفحة بواسطة ابو وسيم 
+                <a href="https://x.com/daghriry" target="_blank"><i class="fab fa-twitter"></i> @daghriry</a>
+            </p>
         </div>
-    </footer>
+    </div>
 
     <script>
         function calculatePension() {
@@ -100,8 +164,8 @@
             const totalYears = civilYears + companyYears + (civilMonths + companyMonths) / 12;
             const estimatedPension = (civilSalary * 0.7 + companySalary * 0.3) * (totalYears / 40);
 
-            document.getElementById('result').classList.remove('hidden');
-            document.getElementById('resultText').textContent = `${estimatedPension.toFixed(2)} ريال سعودي`;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('resultValue').textContent = `${estimatedPension.toFixed(2)} ريال سعودي`;
         }
     </script>
 </body>
